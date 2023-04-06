@@ -10,6 +10,9 @@ class Agentname(models.Model):
     email = models.CharField(max_length=255, blank=True, null=True)
     phone = models.CharField(max_length=13)
     pollingunit_uniqueid = models.IntegerField()
+    
+    def __str__(self):
+        return self.firstname
 
     class Meta:
         managed = False
@@ -24,6 +27,9 @@ class AnnouncedLgaResults(models.Model):
     entered_by_user = models.CharField(max_length=50)
     date_entered = models.DateTimeField()
     user_ip_address = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.lga_name
 
     class Meta:
         managed = False
@@ -38,6 +44,9 @@ class AnnouncedPuResults(models.Model):
     entered_by_user = models.CharField(max_length=50)
     date_entered = models.DateTimeField()
     user_ip_address = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.party_abbreviation
 
     class Meta:
         managed = False
@@ -52,6 +61,9 @@ class AnnouncedStateResults(models.Model):
     entered_by_user = models.CharField(max_length=50)
     date_entered = models.DateTimeField()
     user_ip_address = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.state_name
 
     class Meta:
         managed = False
@@ -80,6 +92,9 @@ class Lga(models.Model):
     entered_by_user = models.CharField(max_length=50)
     date_entered = models.DateTimeField()
     user_ip_address = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.lga_name
 
     class Meta:
         managed = False
@@ -89,6 +104,9 @@ class Lga(models.Model):
 class Party(models.Model):
     partyid = models.CharField(max_length=11)
     partyname = models.CharField(max_length=11)
+    
+    def __str__(self):
+        return self.partyname
 
     class Meta:
         managed = False
@@ -109,6 +127,9 @@ class PollingUnit(models.Model):
     entered_by_user = models.CharField(max_length=50, blank=True, null=True)
     date_entered = models.DateTimeField(blank=True, null=True)
     user_ip_address = models.CharField(max_length=50, blank=True, null=True)
+    
+    def __str__(self):
+        return self.polling_unit_name
 
     class Meta:
         managed = False
@@ -118,6 +139,9 @@ class PollingUnit(models.Model):
 class States(models.Model):
     state_id = models.IntegerField(primary_key=True)
     state_name = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.state_name
 
     class Meta:
         managed = False
@@ -133,6 +157,9 @@ class Ward(models.Model):
     entered_by_user = models.CharField(max_length=50)
     date_entered = models.DateTimeField()
     user_ip_address = models.CharField(max_length=50)
+    
+    def __str__(self):
+        return self.ward_name
 
     class Meta:
         managed = False
