@@ -6,12 +6,16 @@ from django.http import HttpResponse
 
 def index(request):
     if request.method == 'GET':
-        results = request['q']
+        results = request.GET.get('q')
         
         if results:
-            final_results = AnnouncedPuResults.objects.filter(name__icontains = results)
+            poll_objects = PollingUnit.objects.all()
+            final_results = PollingUnit.objects.filter(polling_unit_number__icontains = results).values('polling_unit_id','polling_unit_name')
+            
         
         else:
             final_results = AnnouncedPuResults.objects.all()
-    pu_results = AnnouncedPuResults.objects.all()
-    return render(request, 'poll_unit_result.html')
+    
+        context = {'results':results, 'final_results': final_results}
+    
+        return render(request, 'poll_unit_result.html',context)
