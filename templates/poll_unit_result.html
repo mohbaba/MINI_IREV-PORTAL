@@ -18,8 +18,13 @@
     <h2>Search results for "{{ results }}"</h2>
 {% if results %}
     <ul>
-    {% for object in final_results %}
-        <li>{{ object.name }}</li>
+    {% for object in poll_objects %}
+        <li>{{ object.polling_unit_number }}</li>
+        
+        <li>{{ object.polling_unit_name }}</li>
+        
+        <li>{{ object.polling_unit_id }}</li>
+
     {% endfor %}
     </ul>
 {% else %}
